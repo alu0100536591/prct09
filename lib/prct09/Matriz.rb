@@ -1,7 +1,9 @@
 
 
 class Matriz
-
+	
+	include Enumerable
+	
 	attr_reader :_fil, :_col, :_Matriz
 
 	def initialize(fil, col)
@@ -102,6 +104,14 @@ class Matriz_Densa < Matriz
 		iguales
 	end
 	#-------------------------------------------------------------------	
+	def each()
+		for i in (0...@_fil)
+			for j in (0...@_col)
+				yield @_Matriz[i][j]
+			end			
+		end
+	end
+	#-------------------------------------------------------------------
 end
 
 ########################################################################
@@ -228,7 +238,17 @@ class Matriz_Dispersa < Matriz
 
 		iguales
 	end
-	#-------------------------------------------------------------------		
+	#-------------------------------------------------------------------
+	def each()
+		for i in (0...@_fil)
+			for j in (0...@_col)
+				if (@_Matriz.include?("#{i},#{j}"))
+					yield @_Matriz["#{i},#{j}"]
+				end
+			end			
+		end
+	end	
+	#-------------------------------------------------------------------	
 end
 
 
