@@ -1,17 +1,17 @@
 require 'Matriz.rb'
 
+
+	MatrizMadre = Matriz.new()
 	puts "MATRICES DENSAS"
 	puts "Mat_A"
-	Mat_A = Matriz_Densa.new(2,2)
-	Mat_A.copy!([[1, 2], [3, 4]])
+	Mat_A = MatrizMadre.convert([[1, 2], [3, 4]])
 	puts Mat_A.to_s
-	Mat_A.read()
-	puts Mat_A.to_s
+	puts Mat_A.class
 	
 	puts "Mat_B"
-	Mat_B = Matriz_Densa.new(2,2)
-	Mat_B.read()
+	Mat_B = MatrizMadre.convert([[2, 3], [7, 1]])
 	puts Mat_B.to_s
+	puts Mat_B.class
 	
 	puts ""
 	puts "Sum A+B:"
@@ -25,16 +25,15 @@ require 'Matriz.rb'
 	
 	puts "MATRICES DISPERSAS"
 	puts "Mat_C"
-	Mat_C = Matriz_Dispersa.new(2,2)
-	Mat_C.copy!([[1, 0], [0, 0]])
+	Mat_C = MatrizMadre.convert([[1, 0], [0, 0]])
 	puts Mat_C.to_s
-	Mat_C.read()
-	puts Mat_C.to_s
+	puts Mat_C.class
+
 	
 	puts "Mat_D"
-	Mat_D = Matriz_Dispersa.new(2,2)
-	Mat_D.read()
+	Mat_D = MatrizMadre.convert([[4, 0], [0, 0]])
 	puts Mat_D.to_s
+	puts Mat_D.class
 	
 	puts ""
 	puts "Sum C+D:"

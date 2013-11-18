@@ -5,10 +5,43 @@ class Matriz
 	include Enumerable
 	
 	attr_reader :_fil, :_col, :_Matriz
-
-	def initialize(fil, col)
-		@_fil, @_col = fil, col
+	
+	def initialize()
 	end
+	#-------------------------------------------------------------------
+	def convert(array)
+		@_fil = array.length
+		@_col = array[0].length
+		
+		matriz_retorno = nil
+		totalElementos = @_fil * @_col
+		if (ContarCeros(array) % totalElementos) < 0.6
+			matriz_retorno = Matriz_Densa.new(@_fil, @_col)
+			matriz_retorno.copy!(array)
+		else
+			matriz_retorno = Matriz_Dispersa.new(@_fil, @_col)
+			matriz_retorno.copy!(array)
+		end	
+		
+		matriz_retorno
+	end	
+	#-------------------------------------------------------------------
+	private
+	def ContarCeros(array)
+		nCeros = 0
+		
+		for i in (0...@_fil)
+			for j in (0...@_col)
+				if (array[i][j] == 0)
+					nCeros+=1
+				end
+				
+			end
+		end 
+	
+		nCeros
+	end
+	#-------------------------------------------------------------------
 
 end
 
@@ -17,7 +50,7 @@ end
 class Matriz_Densa < Matriz
 
 	def initialize(fil, col)
-		super(fil, col)
+		@_fil, @_col = fil, col
 		
 		@_Matriz = Array.new{Array.new()}
 		
@@ -119,7 +152,7 @@ end
 class Matriz_Dispersa < Matriz
 
 	def initialize(fil, col)
-		super(fil, col)
+		@_fil, @_col = fil, col
 		
 		@_Matriz = Hash.new()
 	end
