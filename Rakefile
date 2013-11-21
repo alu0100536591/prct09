@@ -12,7 +12,7 @@ end
 
 desc "Ejecutar las espectativas de la clase Matriz_Densa"
 task :spec_denso do
-  #sh "rspec -I. spec/fraccion_spec.rb"
+  sh "rspec -I. spec/Matriz_Densa_spec.rb"
 end
 
 desc "Ejecutar las espectativas de la clase Matriz_Dispersa"
