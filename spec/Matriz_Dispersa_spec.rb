@@ -1,4 +1,5 @@
-require "lib/prct09/Matriz.rb"
+# require "lib/prct09/Matriz.rb"
+require_relative '../lib/prct09/Matriz.rb'
 
 describe Matriz_Dispersa do
   before :each do
