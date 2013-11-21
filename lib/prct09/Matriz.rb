@@ -136,6 +136,17 @@ class Matriz_Densa < Matriz
 		end #for i
 		iguales
 	end
+	#-------------------------------------------------------------------
+	def to_mdisp() #conversion a Matriz_Dispersa
+		mat_disp = Matriz_Dispersa.new(@_fil, @_col)
+		mat_disp.copy!(@_Matriz)
+		
+		mat_disp
+	end
+	#-------------------------------------------------------------------
+	def coerce(other) #other.class = Matriz_Dispersa
+		[self, other.to_mdensa]
+	end
 	#-------------------------------------------------------------------	
 	def each()
 		for i in (0...@_fil)
