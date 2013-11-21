@@ -1,4 +1,5 @@
-require "lib/prct09/Matriz.rb"
+# require "lib/prct09/Matriz.rb"
+require_relative 'Matriz.rb'
 
 
 	MatrizMadre = Matriz.new()
