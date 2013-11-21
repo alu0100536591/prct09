@@ -283,6 +283,29 @@ class Matriz_Dispersa < Matriz
 		iguales
 	end
 	#-------------------------------------------------------------------
+	def to_mdensa() #conversion a matriz
+		mat_densa = Matriz_Densa.new(@_fil, @_col)
+		array = Array.new()
+		for i in (0...@_fil)
+			aux = Array.new()
+			for j in (0...@_col)
+				if (@_Matriz.include?("#{i},#{j}"))
+					aux << @_Matriz["#{i},#{j}"]
+				else
+					aux << 0
+				end #if
+			end #for j
+			array << aux
+		end #for i
+		mat_densa.copy!(array)
+		
+		mat_densa
+	end
+	#-------------------------------------------------------------------
+	def coerce(other) #other.class = Matriz_Densa
+		[self, other.to_mdisp]
+	end
+	#-------------------------------------------------------------------
 	def each()
 		for i in (0...@_fil)
 			for j in (0...@_col)
