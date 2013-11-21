@@ -6,9 +6,9 @@ require "test/unit"
 class Test_Matriz_Densa < Test::Unit::TestCase
   
   def setup
-    MatrizMadre = Matriz.new()
-    @mat_A = MatrizMadre.convert([[1, 2], [3, 4]])
-    @mat_B = MatrizMadre.convert([[2, 3], [7, 1]])
+    matrizMadre = Matriz.new()
+    @mat_A = matrizMadre.convert([[1, 2], [3, 4]])
+    @mat_B = matrizMadre.convert([[2, 3], [7, 1]])
   end
   
   def test_initialize

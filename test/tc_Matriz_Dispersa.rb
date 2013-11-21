@@ -6,9 +6,9 @@ require "test/unit"
 class Test_Matriz_Dispersa < Test::Unit::TestCase
   
   def setup
-    MatrizMadre = Matriz.new()
-    @mat_C = MatrizMadre.convert([[1, 0], [0, 0]])
-    @mat_D = MatrizMadre.convert([[4, 0], [0, 0]])
+    matrizMadre = Matriz.new()
+    @mat_C = matrizMadre.convert([[1, 0], [0, 0]])
+    @mat_D = matrizMadre.convert([[4, 0], [0, 0]])
   end
   
   def test_initialize
