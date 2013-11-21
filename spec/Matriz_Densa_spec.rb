@@ -1,4 +1,4 @@
-require "../lib/prct09/Matriz.rb"
+require "lib/prct09/Matriz.rb"
 
 describe Matriz_Densa do
   before :each do

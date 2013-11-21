@@ -1,6 +1,6 @@
 # Implementar en este fichero las Pruebas Unitarias asociadas a la clase Matriz_Dispersa
 
-require "../lib/prct09/Matriz.rb"
+require "lib/prct09/Matriz.rb"
 require "test/unit"
 
 class Test_Matriz_Dispersa < Test::Unit::TestCase

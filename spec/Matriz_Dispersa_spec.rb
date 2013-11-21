@@ -1,11 +1,11 @@
-require "../lib/prct09/Matriz.rb"
+require "lib/prct09/Matriz.rb"
 
 describe Matriz_Dispersa do
   before :each do
     matrizMadre = Matriz.new()
     @mat_C = matrizMadre.convert([[1, 0], [0, 0]])
     @mat_D = matrizMadre.convert([[4, 0], [0, 0]])
-	 @mat_Datos = matrizMadre.convert([[4, 0], [0, 0]])
+	 @mat_Datos = matrizMadre.convert([[1, 0], [0, 0]])
 	 @result_sum = matrizMadre.convert([[5, 0], [0, 0]])
 	 @result_mult = matrizMadre.convert([[8, 0], [0, 0]])
   end
