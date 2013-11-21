@@ -29,14 +29,16 @@ describe Matriz_Dispersa do
 	describe "# Suma de matrices" do
 		it "Se deben poder sumar dos matrices" do
 			sum = (@mat_C + @mat_D)
-			sum.should == @result_sum
+			#sum.should == @result_sum
+			sum.to_s.should eq("5 0 \n0 0 \n")
 		end
 	end
 	
 	describe "# Multiplicacion de matrices" do
 		it "Se deben poder multiplicar dos matrices" do
 			mult = (@mat_C * @mat_D)
-			mult.should == @result_mult
+			#mult.should == @result_mult
+			mult.to_s.should eq("8 0 \n0 0 \n")
 		end
 	end
 	
