@@ -1,1 +1,11 @@
+$:.unshift File.dirname(__FILE__) + 'lib'
 require "bundler/gem_tasks"
+
+require 'rspec/core/rake_task'
+RSpec::Core::RakeTask.new
+task :default => :spec
+
+desc "Run /lib/frac_main.rb"
+task :bin do
+  sh "rspec -I. lib/prct09/prct09.rb"
+end

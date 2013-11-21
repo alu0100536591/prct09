@@ -1,4 +1,4 @@
-require 'Matriz.rb'
+require "lib/prct09/Matriz.rb"
 
 
 	MatrizMadre = Matriz.new()
