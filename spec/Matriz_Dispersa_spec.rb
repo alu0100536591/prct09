@@ -42,4 +42,24 @@ describe Matriz_Dispersa do
 		end
 	end
 	
+	describe "# Mayor y Menor lemento" do
+	  it "Mayor elemento" do
+	    @mat_C.max.should eq(1)
+	  end
+	  it "Menor elemento" do
+	    @mat_D.min.should eq(4)
+	  end
+	end
+	
+	describe "# Espectativas para el comparador <=>" do
+	  it "Las Matrices se deben de poder comparar con >" do
+	    #@mat_B.should > @mat_A
+	    (@mat_D > @mat_C).should eq(true)
+	  end
+	  it "Las Matrices se deben de poder comparar con <" do
+# 	    @mat_A.should < @mat_B
+	    (@mat_D < @mat_C).should eq(false)
+	  end
+	end
+	
 end

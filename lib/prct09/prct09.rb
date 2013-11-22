@@ -26,7 +26,17 @@ require_relative 'Matriz.rb'
 	
 	puts "Prod A*B:"
 	puts "#{(Mat_A * Mat_B)}"
+	puts ""
 	
+	puts "Maximos"
+	puts "Maximo de Mat_A: #{Mat_A.max}"
+	puts "Maximo de Mat_B: #{Mat_B.max}"
+	
+	puts ""
+	
+	puts "Minimos"
+	puts "Minimo de Mat_C: #{Mat_A.min}"
+	puts "Minimo de Mat_D: #{Mat_B.min}"
 	#---------------------------------------------
 	
 	puts "MATRICES DISPERSAS"
@@ -51,5 +61,15 @@ require_relative 'Matriz.rb'
 	puts "Prod C*D:"
 	puts "#{(Mat_C * Mat_D)}"
 	
+	puts ""
 	
+	puts "Maximos"
+	puts "Maximo de Mat_C: #{Mat_C.max}"
+	puts "Maximo de Mat_D: #{Mat_D.max}"
+	
+	puts "¿Cual es mayor?: #{Mat_C > Mat_D}"
+	
+	puts "Minimos"
+	puts "Minimo de Mat_C: #{Mat_C.min}"
+	puts "Minimo de Mat_D: #{Mat_D.min}"
 

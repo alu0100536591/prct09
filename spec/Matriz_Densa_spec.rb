@@ -40,4 +40,25 @@ describe Matriz_Densa do
 		end
 	end
 	
+	describe "# Mayor y Menor lemento" do
+	  it "Mayor elemento" do
+	    @mat_A.max.should eq(4)
+	  end
+	  it "Menor elemento" do
+	    @mat_B.min.should eq(1)
+	  end
+	end
+	
+	describe "# Espectativas para el comparador <=>" do
+	  it "Las Matrices se deben de poder comparar con >" do
+	    #@mat_B.should > @mat_A
+	    (@mat_B > @mat_A).should eq(true)
+	  end
+	  it "Las Matrices se deben de poder comparar con <" do
+# 	    @mat_A.should < @mat_B
+	    (@mat_B < @mat_A).should eq(false)
+	  end
+	end
+	
+	
 end

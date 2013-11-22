@@ -3,6 +3,7 @@
 class Matriz
 	
 	include Enumerable
+	include Comparable
 	
 	attr_reader :_fil, :_col, :_Matriz
 	
@@ -156,6 +157,9 @@ class Matriz_Densa < Matriz
 		end
 	end
 	#-------------------------------------------------------------------
+	def <=>(other)
+	  @_Matriz.max <=> other.max
+	end
 end
 
 ########################################################################
@@ -316,6 +320,9 @@ class Matriz_Dispersa < Matriz
 		end
 	end	
 	#-------------------------------------------------------------------	
+	def <=>(other)
+	  @_Matriz.max <=> other.max
+	end
 end
 
 
