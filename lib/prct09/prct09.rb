@@ -67,7 +67,7 @@ require_relative 'Matriz.rb'
 	puts "Maximo de Mat_C: #{Mat_C.max}"
 	puts "Maximo de Mat_D: #{Mat_D.max}"
 	
-	puts "¿Cual es mayor?: #{Mat_C > Mat_D}"
+	#puts "Cual es Mayor?: #{Mat_C > Mat_D}"
 	
 	puts "Minimos"
 	puts "Minimo de Mat_C: #{Mat_C.min}"

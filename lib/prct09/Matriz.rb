@@ -53,11 +53,11 @@ class Matriz_Densa < Matriz
 	def initialize(fil, col)
 		@_fil, @_col = fil, col
 		
-		@_Matriz = Array.new{Array.new()}
+		@_Matriz = Array.new(@_fil){Array.new()}
 		
-		for i in (0...@_fil)
-			@_Matriz[i] = Array.new()
-		end		
+		#for i in (0...@_fil)
+		#	@_Matriz[i] = Array.new()
+		#end		
 	end
 	#-------------------------------------------------------------------
 	def read()
@@ -94,6 +94,16 @@ class Matriz_Densa < Matriz
 	#-------------------------------------------------------------------
 	def +(other)
 		sum = Matriz_Densa.new(@_fil, @_col)
+	
+		0.upto(@_fil-1) { |i| 
+			0.upto(@_col-1) { |j| sum._Matriz[i][j] = (@_Matriz[i][j] + other._Matriz[i][j]) } 
+		}
+		
+		sum
+	end
+	#-------------------------------------------------------------------
+	def sum(other)
+		sum = Matriz_Densa.new(@_fil, @_col)
 
 		for i in (0...@_fil)
 			for j in (0...@_col)
@@ -102,11 +112,26 @@ class Matriz_Densa < Matriz
 		end
 
 		sum
-	end
+	end	
 	#-------------------------------------------------------------------
 	def *(other)
-		mult = Matriz_Densa.new(@_fil, @_col)	 
-		 
+		mult = Matriz_Densa.new(@_fil, @_col)
+		
+		0.upto(@_fil-1) { |i| 
+			0.upto(@_col-1) { |j| 
+				aux = 0 
+				0.upto(other._fil-1) { |k| aux += (@_Matriz[i][k] * other._Matriz[k][j]) }
+				mult._Matriz[i][j] = aux 
+			} 
+		} 
+		
+		mult
+			 	 
+	end
+	#-------------------------------------------------------------------
+	def prod(other)
+		mult = Matriz_Densa.new(@_fil, @_col)
+			 	 
 		for i in (0...@_fil)
 			for j in (0...other._col)
 			
@@ -186,9 +211,7 @@ class Matriz_Dispersa < Matriz
 			value = gets
 			
 			@_Matriz["#{fil.to_i},#{col.to_i}"] = value.to_i			
-		
-			#puts @_Matriz["#{fil.to_i},#{col.to_i}"]
-			
+				
 			print "Continue read? true(1) or false(0): "
 			otro_mas = gets
 			if (otro_mas.to_i != 1)
@@ -227,6 +250,32 @@ class Matriz_Dispersa < Matriz
 	end
 	#-------------------------------------------------------------------
 	def +(other)
+
+	end
+	#-------------------------------------------------------------------
+		def +(other)
+		sum = Matriz_Dispersa.new(@_fil, @_col)
+	
+		0.upto(@_fil-1) { |i| 
+			0.upto(@_col-1) { |j| 
+				valueA = 0
+				if (@_Matriz.include?("#{i},#{j}"))
+					valueA = @_Matriz["#{i},#{j}"]
+				end
+				
+				valueB = 0
+				if (other._Matriz.include?("#{i},#{j}"))
+					valueB = other._Matriz["#{i},#{j}"]
+				end
+				
+				sum._Matriz["#{i},#{j}"] = (valueA + valueB)
+			 } 
+		}
+		
+		sum
+	end
+	#-------------------------------------------------------------------
+	def sum(other)
 		sum = Matriz_Dispersa.new(@_fil, @_col)
 
 		for i in (0...@_fil)
@@ -246,9 +295,31 @@ class Matriz_Dispersa < Matriz
 		end
 
 		sum
-	end
+	end	
 	#-------------------------------------------------------------------
 	def *(other)
+		mult = Matriz_Dispersa.new(@_fil, @_col)
+		
+		0.upto(@_fil-1) { |i| 
+			0.upto(@_col-1) { |j| 
+				aux = 0 
+				0.upto(other._fil-1) { |k| 
+					valueA, valueB = 0, 0
+					if (@_Matriz.include?("#{i},#{j}")) and (other._Matriz.include?("#{i},#{j}"))
+						aux += (@_Matriz["#{i},#{j}"] * other._Matriz["#{i},#{j}"])
+					else
+						aux += 0
+					end	
+				}
+				mult._Matriz["#{i},#{j}"] = aux
+			} 
+		} 
+		
+		mult
+			 	 
+	end
+	#-------------------------------------------------------------------
+	def prod(other)
 		mult = Matriz_Dispersa.new(@_fil, @_col)	 
 		 
 		for i in (0...@_fil)
@@ -324,6 +395,6 @@ class Matriz_Dispersa < Matriz
 	  @_Matriz.max <=> other.max
 	end
 end
-
+########################################################################
 
  
