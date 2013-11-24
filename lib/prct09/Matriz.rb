@@ -148,6 +148,30 @@ class Matriz_Densa < Matriz
 		mult
 	end
 	#-------------------------------------------------------------------
+	def max()
+		max = @_Matriz[0][0]
+		for i in (0...@_fil)
+			for j in (0...@_col)
+				if (@_Matriz[i][j] >= max)
+					max = @_Matriz[i][j]
+				end #if
+			end # for j
+		end #for i
+		max
+	end
+	#-------------------------------------------------------------------
+	def min()
+		min = @_Matriz[0][0]
+		for i in (0...@_fil)
+			for j in (0...@_col)
+				if (@_Matriz[i][j] <= min)
+					min = @_Matriz[i][j]
+				end #if
+			end # for j
+		end #for i
+		min
+	end
+	#-------------------------------------------------------------------
 	def ==(other)
 		raise TypeError, "Solo se pueden comparar matrices" unless other.is_a?Matriz_Densa
 		raise RangeError, "Las filas deben ser iguales" unless @_fil == other._fil
@@ -183,7 +207,7 @@ class Matriz_Densa < Matriz
 	end
 	#-------------------------------------------------------------------
 	def <=>(other)
-	  @_Matriz.max <=> other.max
+	  max <=> other.max
 	end
 end
 
@@ -345,6 +369,42 @@ class Matriz_Dispersa < Matriz
 		mult
 	end
 	#-------------------------------------------------------------------
+	def max()
+		if (@_Matriz.include?("0,0")) #max = al primer elemento del hash
+			max = @_Matriz["0,0"]
+		else
+			max = 0
+		end
+		for i in (0...@_fil)
+			for j in (0...@_col)
+				if ((@_Matriz.include?("#{i},#{j}")) && (@_Matriz["#{i},#{j}"] >= max))
+					max = @_Matriz["#{i},#{j}"]
+				end #if
+			end #for j
+		end #for i
+		max
+	end
+	#-------------------------------------------------------------------
+	def min()
+		if (@_Matriz.include?("0,0")) #min = al primer elemento del hash
+			min = @_Matriz["0,0"]
+		else
+			min = 0
+		end
+		for i in (0...@_fil)
+			for j in (0...@_col)
+				if (@_Matriz.include?("#{i},#{j}"))
+					if (@_Matriz["#{i},#{j}"] <= min)
+						min = @_Matriz["#{i},#{j}"]
+					end
+				else #Si el minimo no tiene en cuenta el 0 quitar el else
+					min = 0
+				end #if
+			end #for j
+		end #for i
+		max
+	end
+	#-------------------------------------------------------------------
 	def ==(other)
 		raise TypeError, "Solo se pueden comparar matrices" unless other.is_a?Matriz_Dispersa
 		raise RangeError, "Las filas deben ser iguales" unless @_fil == other._fil
@@ -392,7 +452,7 @@ class Matriz_Dispersa < Matriz
 	end	
 	#-------------------------------------------------------------------	
 	def <=>(other)
-	  @_Matriz.max <=> other.max
+	  max <=> other.max
 	end
 end
 ########################################################################
