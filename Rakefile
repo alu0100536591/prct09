@@ -11,6 +11,11 @@ task :spec do
 	sh "rspec -I. spec/Matriz_Dispersa_spec.rb"
 end
 
+desc "Ejecutar Rdoc"
+task :rdoc do
+	sh "rdoc"
+end
+
 desc "Ejecutar las espectativas de la clase Matriz_Densa"
 task :spec_denso do
 	sh "rspec -I. spec/Matriz_Densa_spec.rb"
