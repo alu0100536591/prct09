@@ -6,9 +6,13 @@ describe Matriz_Densa do
     matrizMadre = Matriz.new()
     @mat_A = matrizMadre.convert([[1, 2], [3, 4]])
     @mat_B = matrizMadre.convert([[2, 3], [7, 1]])
-	 @mat_Datos = matrizMadre.convert([[1, 2], [3, 4]])
-	 @result_sum = matrizMadre.convert([[3, 5], [10, 5]])
-	 @result_mult = matrizMadre.convert([[16, 5], [34, 13]])
+    @mat_Datos = matrizMadre.convert([[1, 2], [3, 4]])
+    @result_sum = matrizMadre.convert([[3, 5], [10, 5]])
+    @result_mult = matrizMadre.convert([[16, 5], [34, 13]])
+    
+    @mat_block = matrizMadre.convert([[1,2,3],[4,5,6],[7,8,9]])
+	 
+	 
   end
   
   describe "# Tamanyo de la matriz " do
@@ -58,6 +62,13 @@ describe Matriz_Densa do
 # 	    @mat_A.should < @mat_B
 	    (@mat_B < @mat_A).should eq(false)
 	  end
+	end
+	
+	describe "# Metodo encontrar con un bloque" do
+	  it "Encontrar" do
+	    (@mat_block.encontrar{ |e| e*e >= 16}).should == ([1,0])
+	  end
+
 	end
 	
 	

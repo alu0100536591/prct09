@@ -150,25 +150,29 @@ class Matriz_Densa < Matriz
 	#-------------------------------------------------------------------
 	def max()
 		max = @_Matriz[0][0]
-		for i in (0...@_fil)
-			for j in (0...@_col)
-				if (@_Matriz[i][j] >= max)
-					max = @_Matriz[i][j]
-				end #if
-			end # for j
-		end #for i
+		
+		0.upto(@_fil-1) { |i|
+		    0.upto(@_col-1) { |j| 
+			if (@_Matriz[i][j] >= max)
+			    max = @_Matriz[i][j] 
+		        end
+		    }          
+		}
+		
 		max
 	end
 	#-------------------------------------------------------------------
 	def min()
 		min = @_Matriz[0][0]
-		for i in (0...@_fil)
-			for j in (0...@_col)
-				if (@_Matriz[i][j] <= min)
-					min = @_Matriz[i][j]
-				end #if
-			end # for j
-		end #for i
+		
+		0.upto(@_fil-1) { |i|
+		    0.upto(@_col-1) { |j| 
+			if (@_Matriz[i][j] <= min)
+			    min = @_Matriz[i][j] 
+		        end
+		    }          
+		}
+		
 		min
 	end
 	#-------------------------------------------------------------------
@@ -209,6 +213,17 @@ class Matriz_Densa < Matriz
 	def <=>(other)
 	  max <=> other.max
 	end
+	
+	def encontrar 
+	    0.upto(@_fil-1) { |i|
+	      0.upto(@_col-1) { |j| 
+		  if (yield @_Matriz[i][j])
+		    return [i, j] 
+		  end
+	      }          
+	    }
+	end
+	  
 end
 
 ########################################################################
